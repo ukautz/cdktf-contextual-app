@@ -1,0 +1,6 @@
+*.d.ts
+*.js
+node_modules
+tsconfig.tsbuildinfo
+!jest.config.js
+!setup.jspackage-lock.json
