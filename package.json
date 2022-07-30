@@ -1,7 +1,7 @@
 {
   "name": "@ukautz/cdktf-contextual-app",
   "description": "An experimental Terraform CDK App replacement, that derives context from environment variables at execution time",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "license": "MIT",
