@@ -35,13 +35,8 @@ const loadEnvContext = (): Object =>
     ? JSON.parse(process.env[RUNTIME_CONTEXT_ENV] as string)
     : {};
 
-const loadPrefixedEnvContext = (): Object => {
-  Object.entries(process.env)
-    .filter(([key]) => key.startsWith(RUNTIME_CONTEXT_ENV_PREFIX))
-    .forEach(([key]) => {
-      console.log(`found "${key}"`);
-    });
-  return Object.fromEntries(
+const loadPrefixedEnvContext = (): Object =>
+  Object.fromEntries(
     Object.entries(process.env)
       .filter(([key]) => key.startsWith(RUNTIME_CONTEXT_ENV_PREFIX))
       .map(([key, value]) => [
@@ -49,7 +44,6 @@ const loadPrefixedEnvContext = (): Object => {
         value,
       ])
   );
-};
 
 const loadFileContext = (): Object =>
   RUNTIME_CONTEXT_FILE_ENV in process.env &&

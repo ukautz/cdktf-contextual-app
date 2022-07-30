@@ -1,12 +1,14 @@
 # CDKTF: Contextual App
 
-This package contains an **experimental** Terraform CDK App replacement, that derives context from environment variables at execution time
+This package contains an **experimental** Terraform CDK App replacement, that derives context from environment variables at execution time.
+
+This is supplemental for my blog.
 
 ## Usage
 
 Install via NPM
 
-```
+```shell
 $ npm install @ukautz/cdktf-contextual-app
 ```
 
@@ -27,7 +29,7 @@ app.synth();
 
 The above context parameters can be set in the environment as follows:
 
-```
+```shell
 # set JSONized context in environment variable
 $ export CDKTF_RUNTIME_CONTEXT='{"name1": "some value"}'
 
@@ -40,7 +42,7 @@ $ cat /tmp/env.json
 { "name3": "some value" }
 ```
 
-Assuming the above environment is availble at exuction time, it will be used during:
+Assuming the above environment is available at execution time, it will be used during:
 
 ```shell
 $ cdktf synth
@@ -48,5 +50,3 @@ $ cdktf deploy
 $ cdktf destroy
 $ cdktf <anything>
 ```
-
-## Disclaimer
