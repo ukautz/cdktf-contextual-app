@@ -63,11 +63,11 @@ export class App extends cdktf.App {
    * - context in file (CDKTF_RUNTIME_CONTEXT_FILE JSON encoded)
    * - context provided in constructor
    */
-  constructor(options?: cdktf.AppOptions) {
+  constructor(config?: cdktf.AppConfig) {
     super({
-      ...options,
+      ...config,
       context: {
-        ...options?.context,
+        ...config?.context,
         ...loadFileContext(),
         ...loadEnvContext(),
         ...loadPrefixedEnvContext(),

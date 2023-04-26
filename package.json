@@ -1,7 +1,7 @@
 {
   "name": "@ukautz/cdktf-contextual-app",
   "description": "An experimental Terraform CDK App replacement, that derives context from environment variables at execution time",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "license": "MIT",
@@ -11,17 +11,20 @@
     "watch": "tsc -w",
     "test": "jest",
     "test:watch": "jest --watch",
+    "clean": "for d in src __tests__; do find $d/ \\( -name '*.js' -or -name '*.d.ts' \\) -delete; done",
     "upgrade": "npm i cdktf@latest cdktf-cli@latest",
     "upgrade:next": "npm i cdktf@next cdktf-cli@next"
   },
   "engines": {
-    "node": ">=14.0"
+    "node": ">=16.0"
   },
-  "dependencies": {
-    "cdktf": "^0.12.0",
-    "constructs": "^10.1.61"
+  "peerDependencies": {
+    "cdktf": "^0.16.0",
+    "constructs": "^10.0.0"
   },
   "devDependencies": {
+    "cdktf": "^0.16.0",
+    "constructs": "^10.1.61",
     "@types/jest": "^28.1.6",
     "@types/node": "^18.6.2",
     "jest": "^28.1.3",
