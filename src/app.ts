@@ -14,21 +14,21 @@ to the App class allow to inject additional context (i.e. in addition to the
 `cdktf.json` file, that will live in VCS) multiple environment variables are
 introduced:
 
-1. `CDKTF_RUNTIME_CONTEXT`: same as `CDKTF_CONTEXT_JSON`, however that is 
+1. `CDKTFAPP_RUNTIME_CONTEXT`: same as `CDKTFAPP_CONTEXT_JSON`, however that is 
     already being (mis?)used, overridden during `cdktf.json` parsing
     see: https://github.com/hashicorp/terraform-cdk/blob/2d58c1256b6e58ce9d89fefc0b8f961e8073b21d/packages/%40cdktf/provider-generator/lib/config.ts
-2. `CDKTF_RUNTIME_CONTEXT_FILE`: takes a local path to a JSON file that
+2. `CDKTFAPP_RUNTIME_CONTEXT_FILE`: takes a local path to a JSON file that
     contains context (and is intended not to be stored in VCS)
-3. `CDKTF_CONTEXT_` is not a "stand-alone", but a prefix for any context
+3. `CDKTFAPP_CONTEXT_` is not a "stand-alone", but a prefix for any context
     value, like `TF_VAR_` was used with in Terraform HCL
 
 The various options are inteded to be experimented with, to understand which
 make sense and which can be dropped.
 */
 
-export const RUNTIME_CONTEXT_ENV = "CDKTF_RUNTIME_CONTEXT";
-export const RUNTIME_CONTEXT_ENV_PREFIX = "CDKTF_CONTEXT_";
-export const RUNTIME_CONTEXT_FILE_ENV = "CDKTF_RUNTIME_CONTEXT_FILE";
+export const RUNTIME_CONTEXT_ENV = "CDKTFAPP_RUNTIME_CONTEXT";
+export const RUNTIME_CONTEXT_ENV_PREFIX = "CDKTFAPP_CONTEXT_";
+export const RUNTIME_CONTEXT_FILE_ENV = "CDKTFAPP_RUNTIME_CONTEXT_FILE";
 
 const loadEnvContext = (): Object =>
   RUNTIME_CONTEXT_ENV in process.env && process.env[RUNTIME_CONTEXT_ENV]
@@ -58,9 +58,9 @@ export class App extends cdktf.App {
    * Constructor is modified to pass over any option, but loads context so
    * that the following order of override is adhered to (topmost has highest
    * priority):
-   * - context in env (CDKTF_CONTEXT_ prefixed)
-   * - context in env (CDKTF_RUNTIME_CONTEXT JSON encoded)
-   * - context in file (CDKTF_RUNTIME_CONTEXT_FILE JSON encoded)
+   * - context in env (CDKTFAPP_CONTEXT_ prefixed)
+   * - context in env (CDKTFAPP_RUNTIME_CONTEXT JSON encoded)
+   * - context in file (CDKTFAPP_RUNTIME_CONTEXT_FILE JSON encoded)
    * - context provided in constructor
    */
   constructor(config?: cdktf.AppConfig) {
