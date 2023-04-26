@@ -31,13 +31,13 @@ The above context parameters can be set in the environment as follows:
 
 ```shell
 # set JSONized context in environment variable
-$ export CDKTF_RUNTIME_CONTEXT='{"name1": "some value"}'
+$ export CDKTFAPP_RUNTIME_CONTEXT='{"name1": "some value"}'
 
 # set prefixed environment variable(s)
-$ export CDKTF_CONTEXT_name2="some value"
+$ export CDKTFAPP_CONTEXT_name2="some value"
 
 # set path to file that contains JSONized context
-$ export CDKTF_RUNTIME_CONTEXT_FILE=/tmp/env.json
+$ export CDKTFAPP_RUNTIME_CONTEXT_FILE=/tmp/env.json
 $ cat /tmp/env.json
 { "name3": "some value" }
 ```
